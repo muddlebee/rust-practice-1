@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 // 统计一些文本中每一个单词分别出现了多少次
-fn count_word() {
+pub fn count_word() {
     let text = "hello world wonderful world";
     let mut map = HashMap::new();
 
