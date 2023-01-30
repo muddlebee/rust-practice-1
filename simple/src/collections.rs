@@ -79,6 +79,25 @@ fn slices_example() {
     println!("{:?}", bar);
 }
 
+pub fn hashmap_example2(){
+    let mut letter_counts: HashMap<char,i32> = HashMap::new();
+
+    let input_string = "Helloeeeeeeeeee, world ! world";
+    let char_vec: Vec<char> = input_string.to_lowercase().chars().collect();
+    for c in char_vec {
+        *letter_counts.entry(c).or_insert(0) += 1;
+    }
+    println!("{:?}",letter_counts);
+
+    let split_words = input_string.split_whitespace();
+    let mut word_count = HashMap::new();
+    for c in split_words {
+        *word_count.entry(c).or_insert(0)+=1;
+    }
+    println!("{:?}",word_count);
+
+}
+
 fn main() {
     vector_example();
     hashmap_example();
