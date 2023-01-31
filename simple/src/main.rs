@@ -13,6 +13,6 @@ use std::{io, vec};
 pub type logType = Vec<u32>;
 
 fn main() {
-struct_example::example();
-
+//struct_example::example();
+collections::pop_vector_example();
 }

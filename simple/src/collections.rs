@@ -59,8 +59,7 @@ fn overlap() {
 fn bunch_of_numbers() -> Vec<u32> {
     (0..10).collect()
 }
-
-fn new_vector_example() {
+pub fn new_vector_example() {
     let nums = bunch_of_numbers();
 
     match nums.last() {
@@ -68,6 +67,19 @@ fn new_vector_example() {
         Some(n) => println!("Last number is {}", n),
         None => println!("There are no numbers"),
     }
+    println!("nums vector {:?}", nums);
+
+}
+
+pub fn pop_vector_example() {
+    let mut nums = bunch_of_numbers();
+
+    match nums.pop() {
+        Some(n) => println!("Popped number is {}", n),
+        None => println!("There are no numbers"),
+    }
+    println!("nums vector {:?}", nums);
+
 }
 
 fn slices_example() {
