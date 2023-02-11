@@ -12,17 +12,25 @@ pub fn count_word() {
     println!("count {:?}", map);
 }
 
-fn vector_example() {
-    let v: Vec<i32> = Vec::new();
+pub fn vector_example() {
+  /*  let v: Vec<i32> = Vec::new();
     println!("vec size {}", v.len());
     let mut v = Vec::new();
     v.push(8);
-    println!("after push vec size {}", v.len());
-    let v = vec![1, 2];
+    println!("after push vec size {}", v.len());*/
+    let mut v = vec![1, 2];
     println!("vec get element {}", &v[0]);
     for i in &v {
         println!("vec each item {}", i);
     }
+
+    let mut mv = &mut v;
+    mv.push(2);
+    mv.push(3);
+    // println!("vec1 {:?}", &v);
+    println!("vec2 {:?}", mv);
+
+
 }
 
 fn hashmap_example() {
