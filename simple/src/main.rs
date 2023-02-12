@@ -6,6 +6,7 @@ mod string;
 mod OrdStruct;
 mod binary_heap;
 mod shared_ownership;
+mod where_clause_trait;
 
 // guess game from TRLB
 extern crate rand;
@@ -19,6 +20,5 @@ pub type logType = Vec<u32>;
 
 
 fn main() {
-    shared_ownership::rc_clone();
-    shared_ownership::box_clone();
+
 }
