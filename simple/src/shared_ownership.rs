@@ -10,7 +10,7 @@ pub fn rc_clone() {
     }
     println!("{}", rc_clone);
 }
-
+/*
 pub fn box_clone(){
     let b_ref;
     {
@@ -20,4 +20,4 @@ pub fn box_clone(){
         // the underlying data gets dropped.
     }
     println!("{}", b_ref);
-}
+}*/
