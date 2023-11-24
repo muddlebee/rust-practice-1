@@ -9,6 +9,7 @@ mod shared_ownership;
 mod where_clause_trait;
 mod option_utils;
 mod generic_larger_object;
+mod result;
 
 // guess game from TRLB
 extern crate rand;
