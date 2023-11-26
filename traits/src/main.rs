@@ -8,10 +8,15 @@ trait HasArea {
 impl HasArea for Rectangle {
     fn area(&self) -> f64 { self.length * self.height }
 }
+//
+// impl HasArea for Triangle {
+//     fn area(&self) -> f64 { self.length * self.height }
+// }
 
 #[derive(Debug)]
 struct Rectangle { length: f64, height: f64 }
 #[allow(dead_code)]
+//#[derive(Debug)]
 struct Triangle  { length: f64, height: f64 }
 
 // The generic `T` must implement `Debug`. Regardless
