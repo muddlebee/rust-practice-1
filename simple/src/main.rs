@@ -11,6 +11,7 @@ mod option_utils;
 mod generic_larger_object;
 mod result;
 mod instant;
+mod hashMap;
 
 // guess game from TRLB
 extern crate rand;
@@ -24,5 +25,5 @@ pub type logType = Vec<u32>;
 
 
 fn main() {
-    instant::sample_test();
+    hashMap::hash_map();
 }

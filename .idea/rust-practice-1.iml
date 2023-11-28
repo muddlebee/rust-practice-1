@@ -5,8 +5,11 @@
     <content url="file://$MODULE_DIR$">
       <sourceFolder url="file://$MODULE_DIR$/simple/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/traits/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pingcap/project-1-kv-store/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/pingcap/project-1-kv-store/tests" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/simple/target" />
       <excludeFolder url="file://$MODULE_DIR$/traits/target" />
+      <excludeFolder url="file://$MODULE_DIR$/pingcap/project-1-kv-store/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

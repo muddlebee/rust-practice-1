@@ -1,0 +1,5 @@
+.DS_Store
+.vscode
+.devcontainer
+
+project-1-kv-store/target/*
