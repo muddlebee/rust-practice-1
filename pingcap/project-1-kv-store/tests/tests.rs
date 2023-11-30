@@ -2,6 +2,7 @@ use assert_cmd::prelude::*;
 use kvs::{KvStore, KvStoreDisk};
 use predicates::str::contains;
 use std::process::Command;
+use predicates::prelude::predicate;
 
 // `kvs` with no args should exit with a non-zero code.
 #[test]
@@ -19,16 +20,7 @@ fn cli_version() {
         .stdout(contains(env!("CARGO_PKG_VERSION")));
 }
 
-// `kvs get <KEY>` should print "unimplemented" to stderr and exit with non-zero code
-#[test]
-fn cli_get() {
-    Command::cargo_bin("kvs")
-        .unwrap()
-        .args(["get", "key1"])
-        .assert()
-        .failure()
-        .stderr(contains("unimplemented"));
-}
+
 
 // `kvs set <KEY> <VALUE>` should print "unimplemented" to stderr and exit with non-zero code
 #[test]
@@ -37,19 +29,44 @@ fn cli_set() {
         .unwrap()
         .args(["set", "key1", "value1"])
         .assert()
-        .failure()
-        .stderr(contains("unimplemented"));
+        .success()
+        .stdout(predicate::str::contains("key: key1, value: value1"));
 }
+// `kvs get <KEY>` should print "unimplemented" to stderr and exit with non-zero code
+#[test]
+fn cli_get() {
+
+    Command::cargo_bin("kvs")
+        .unwrap()
+        .args(["set", "key1", "value1"])
+        .assert()
+        .success();
+
+    Command::cargo_bin("kvs")
+        .unwrap()
+        .args(["get", "key1"])
+        .assert()
+        .success()
+        .stdout(predicate::str::contains("key: key1, value: value1"));
+}
+
 
 // `kvs rm <KEY>` should print "unimplemented" to stderr and exit with non-zero code
 #[test]
 fn cli_rm() {
+
+    Command::cargo_bin("kvs")
+        .unwrap()
+        .args(["set", "key1", "value1"])
+        .assert()
+        .success();
+
     Command::cargo_bin("kvs")
         .unwrap()
         .args(["rm", "key1"])
         .assert()
-        .failure()
-        .stderr(contains("unimplemented"));
+        .success()
+        .stdout(predicate::str::contains("key: key1, value: value1"));
 }
 
 #[test]

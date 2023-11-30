@@ -52,7 +52,7 @@ fn main() {
                 ("get", Some(args)) => {
                     let key = args.value_of("KEY").expect("KEY argument missing");
                     match store.get(key.to_owned()) {
-                        Ok(Some(value)) => println!("key: {}, value: {:?}", key, value),
+                        Ok(Some(value)) => println!("key: {}, value: {:}", key, value),
                         Ok(None) => println!("Key not found"),
                         Err(e) => {
                             eprintln!("Failed to get value: {}", e);
@@ -64,7 +64,7 @@ fn main() {
                 ("rm", Some(args)) => {
                     let key = args.value_of("KEY").expect("KEY argument missing");
                     match store.remove(key.to_owned()) {
-                        Ok(Some(value)) => println!("key: {}, value: {:?}", key, value),
+                        Ok(Some(value)) => println!("key: {}, value: {:}", key, value),
                         Ok(None) => println!("Key not found"),
                         Err(e) => {
                             eprintln!("Failed to remove key: {}", e);
