@@ -1,5 +1,5 @@
 use assert_cmd::prelude::*;
-use kvs::KvStore;
+use kvs::{KvStore, KvStoreDisk};
 use predicates::str::contains;
 use std::process::Command;
 
@@ -152,4 +152,33 @@ fn remove_key() {
     store.set("key1".to_owned(), "value1".to_owned());
     store.remove("key1".to_owned());
     assert_eq!(store.get("key1".to_owned()), None);
+}
+
+
+// add tests for KvStoreDisk
+#[test]
+fn set_and_get_value() {
+    let mut store = KvStoreDisk::new().expect("Failed to create KvStoreDisk");
+    let key = "test_key".to_string();
+    let value = "test_value".to_string();
+
+    store.set(key.clone(), value.clone()).expect("Failed to set value");
+    assert_eq!(store.get(key).unwrap(), Some(value));
+}
+
+#[test]
+fn get_non_existent_key() {
+    let store = KvStoreDisk::new().expect("Failed to create KvStoreDisk");
+    let key = "non_existent_key".to_string();
+    assert_eq!(store.get(key).unwrap(), None);
+}
+
+#[test]
+fn set_and_remove_key() {
+    let mut store = KvStoreDisk::new().expect("Failed to create KvStoreDisk");
+    let key = "key_to_remove".to_string();
+    store.set(key.clone(), "value".to_string()).expect("Failed to set value");
+
+    assert_eq!(store.remove(key.clone()).unwrap(), Some("value".to_string()));
+    assert_eq!(store.get(key).unwrap(), None);
 }
