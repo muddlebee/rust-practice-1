@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
-use std::{collections::HashMap, fs::{self, File}, io::{self, Read, Write}, path::Path};
-use serde_json;
+use std::{collections::HashMap, fs::{self, File}, io::{self, Read}, path::Path};
+
 #[derive(Serialize, Deserialize, Default)]
 pub struct KvStoreDisk {
     map: HashMap<String, String>,
@@ -25,8 +25,9 @@ impl KvStoreDisk {
         self.save_to_disk()
     }
 
-    pub fn get(&self, key: String) -> Option<String> {
-        self.map.get(&key).cloned()
+    pub fn get(&self, key: String) -> io::Result<Option<String>> {
+        let result = self.map.get(&key).cloned();
+        Ok(result)
     }
 
     pub fn remove(&mut self, key: String) -> io::Result<Option<String>> {
